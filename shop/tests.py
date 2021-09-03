@@ -47,6 +47,7 @@ class ShopAPITestCase(APITestCase):
             {
                 'id': category.id,
                 'name': category.name,
+                'description': category.description,
                 'date_created': self.format_datetime(category.date_created),
                 'date_updated': self.format_datetime(category.date_updated),
             } for category in categories
