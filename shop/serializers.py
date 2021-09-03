@@ -24,7 +24,14 @@ class ProductSerializer(serializers.ModelSerializer):
         return serializer.data
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategoryListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = ['id', 'date_created', 'date_updated', 'name']
+
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
 
     products = serializers.SerializerMethodField()
 
