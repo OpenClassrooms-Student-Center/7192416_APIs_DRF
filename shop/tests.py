@@ -20,6 +20,17 @@ class ShopAPITestCase(APITestCase):
     def format_datetime(self, value):
         return value.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
+    def get_article_list_data(self, articles):
+        return [
+            {
+                'id': article.pk,
+                'name': article.name,
+                'date_created': self.format_datetime(article.date_created),
+                'date_updated': self.format_datetime(article.date_updated),
+                'product': article.product_id
+            } for article in articles
+        ]
+
     def get_product_list_data(self, products):
         return [
             {
@@ -27,7 +38,8 @@ class ShopAPITestCase(APITestCase):
                 'name': product.name,
                 'date_created': self.format_datetime(product.date_created),
                 'date_updated': self.format_datetime(product.date_updated),
-                'category': product.category_id
+                'category': product.category_id,
+                'articles': self.get_article_list_data(product.articles.filter(active=True))
             } for product in products
         ]
 
