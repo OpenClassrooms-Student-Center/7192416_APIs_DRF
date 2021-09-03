@@ -39,7 +39,6 @@ class ShopAPITestCase(APITestCase):
                 'date_created': self.format_datetime(product.date_created),
                 'date_updated': self.format_datetime(product.date_updated),
                 'category': product.category_id,
-                'articles': self.get_article_list_data(product.articles.filter(active=True))
             } for product in products
         ]
 
