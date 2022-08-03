@@ -7,5 +7,6 @@ from shop.views import CategoryView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/category/', CategoryView.as_view())
+    path('api/category/', CategoryView.as_view()),
+    path('api/product/',ProductAPIView.as_view())
 ]
